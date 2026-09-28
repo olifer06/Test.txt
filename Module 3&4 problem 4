@@ -1,0 +1,7 @@
+# Module 3 & 4 - Problem 4
+
+amount_received = float(input("Enter the amount received for the job: $"))
+
+each_person = amount_received / 3
+
+print(f"Each person will receive: ${each_person:.2f}")
