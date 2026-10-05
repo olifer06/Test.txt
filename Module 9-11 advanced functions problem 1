@@ -1,0 +1,20 @@
+def compute_discount(qty, price, discount_rate):
+    total_price = qty * price
+    discount_amount = total_price * discount_rate
+    discounted_price = total_price - discount_amount
+
+    return discount_amount, discounted_price
+
+
+qty = int(input("Enter quantity: "))
+price = float(input("Enter price: "))
+discount_rate = float(input("Enter discount rate as a decimal: "))
+
+discount_amount, discounted_price = compute_discount(
+    qty, price, discount_rate
+)
+
+print("Quantity:", qty)
+print("Price: ${:.2f}".format(price))
+print("Discount Amount: ${:.2f}".format(discount_amount))
+print("Discounted Price: ${:.2f}".format(discounted_price))

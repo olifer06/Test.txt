@@ -1,0 +1,29 @@
+def compute_extended_price(qty, unitprice):
+    extended_price = qty * unitprice
+
+    if extended_price > 10000:
+        extended_price = extended_price * 0.90
+
+    return extended_price
+
+
+total_ext_price = 0
+
+while True:
+    qty_input = input("Enter quantity or Q to quit: ")
+
+    if qty_input.upper() == "Q":
+        break
+
+    qty = int(qty_input)
+    unitprice = float(input("Enter unit price: "))
+
+    ext_price = compute_extended_price(qty, unitprice)
+
+    print("Quantity:", qty)
+    print("Price: ${:.2f}".format(unitprice))
+    print("Extended Price: ${:.2f}".format(ext_price))
+
+    total_ext_price += ext_price
+
+print("Total Extended Price: ${:.2f}".format(total_ext_price))

@@ -1,0 +1,24 @@
+def compute_batting_average(hits, at_bats):
+    batting_average = hits / at_bats
+    return batting_average
+
+
+player_count = 0
+
+while True:
+    last_name = input("Enter player's last name or Q to quit: ")
+
+    if last_name.upper() == "Q":
+        break
+
+    hits = int(input("Enter number of hits: "))
+    at_bats = int(input("Enter number of at bats: "))
+
+    batting_average = compute_batting_average(hits, at_bats)
+
+    print("Last Name:", last_name)
+    print("Batting Average: {:.3f}".format(batting_average))
+
+    player_count += 1
+
+print("Number of players entered:", player_count)
