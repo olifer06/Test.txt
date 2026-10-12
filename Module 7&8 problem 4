@@ -1,0 +1,33 @@
+
+# Problem 4
+
+total = 0
+count = 0
+
+order_file = open("orders.txt", "r")
+
+while True:
+    item = order_file.readline().strip()
+
+    if item == "":
+        break
+
+    quantity = int(order_file.readline().strip())
+    price = float(order_file.readline().strip())
+
+    extended_price = quantity * price
+    total = total + extended_price
+    count = count + 1
+
+    print(item, "Quantity:", quantity,
+          "Price: $", format(price, ".2f"),
+          "Extended Price: $", format(extended_price, ".2f"))
+
+order_file.close()
+
+print("Total extended prices: $", format(total, ".2f"))
+print("Number of orders:", count)
+
+if count > 0:
+    average = total / count
+    print("Average order: $", format(average, ".2f"))

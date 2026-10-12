@@ -1,0 +1,33 @@
+
+# Problem 5
+
+total_tuition = 0
+student_count = 0
+
+student_file = open("students.txt", "r")
+
+while True:
+    last_name = student_file.readline().strip()
+
+    if last_name == "":
+        break
+
+    district = student_file.readline().strip()
+    credits = int(student_file.readline().strip())
+
+    if district == "I":
+        cost_per_credit = 250.00
+    else:
+        cost_per_credit = 500.00
+
+    tuition = credits * cost_per_credit
+    total_tuition = total_tuition + tuition
+    student_count = student_count + 1
+
+    print(last_name, "Credits:", credits,
+          "Tuition owed: $", format(tuition, ".2f"))
+
+student_file.close()
+
+print("Total tuition owed: $", format(total_tuition, ".2f"))
+print("Number of students:", student_count)

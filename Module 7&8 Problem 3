@@ -1,0 +1,31 @@
+
+# Problem 3
+
+total_bonus = 0
+
+employee_file = open("employees.txt", "r")
+
+while True:
+    last_name = employee_file.readline().strip()
+
+    if last_name == "":
+        break
+
+    salary = float(employee_file.readline().strip())
+
+    if salary >= 100000:
+        bonus_rate = 0.20
+    elif salary >= 50000:
+        bonus_rate = 0.15
+    else:
+        bonus_rate = 0.10
+
+    bonus = salary * bonus_rate
+    total_bonus = total_bonus + bonus
+
+    print(last_name, "Salary: $", format(salary, ".2f"),
+          "Bonus: $", format(bonus, ".2f"))
+
+employee_file.close()
+
+print("Total bonuses paid: $", format(total_bonus, ".2f"))

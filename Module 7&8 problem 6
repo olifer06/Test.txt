@@ -1,0 +1,20 @@
+
+# Problem 6
+
+response = input("Do you want to do this program? Enter Yes to continue: ")
+count = 0
+
+while response.lower() == "yes" or response.lower() == "y":
+    last_name = input("Enter the student's last name: ")
+    exam1 = float(input("Enter the first exam score: "))
+    exam2 = float(input("Enter the second exam score: "))
+
+    average = (exam1 + exam2) / 2
+
+    print(last_name, "Average exam score:", format(average, ".2f"))
+
+    count = count + 1
+
+    response = input("Do you want to do this loop again? Enter Yes to continue: ")
+
+print("Number of students who entered data:", count)
