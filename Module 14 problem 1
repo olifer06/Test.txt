@@ -1,0 +1,29 @@
+
+# Problem 1
+# Employee class with bonus calculation
+
+class Employee:
+    def __init__(self, first_name, last_name, salary):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.salary = salary
+
+    def display_employee(self):
+        print("Employee:", self.first_name, self.last_name)
+        print("Salary: $", format(self.salary, ",.2f"))
+
+    def calculate_bonus(self, bonus_rate):
+        bonus = self.salary * bonus_rate
+        return bonus
+
+
+employee1 = Employee("James", "Anderson", 65000)
+
+employee1.display_employee()
+
+bonus_rate = float(input("Enter bonus rate (example 0.10 for 10%): "))
+
+bonus = employee1.calculate_bonus(bonus_rate)
+
+print("Bonus Rate:", format(bonus_rate, ".0%"))
+print("Employee Bonus: $", format(bonus, ",.2f"))

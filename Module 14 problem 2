@@ -1,0 +1,32 @@
+
+# Problem 2
+# Student class with tuition calculation
+
+class Student:
+    def __init__(self, first_name, last_name, district_code, credits):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.district_code = district_code
+        self.credits = credits
+
+    def calculate_tuition(self):
+        if self.district_code == "I":
+            tuition = self.credits * 250
+        else:
+            tuition = self.credits * 500
+
+        return tuition
+
+    def display_student(self):
+        print("Student:", self.first_name, self.last_name)
+        print("District Code:", self.district_code)
+        print("Enrolled Credits:", self.credits)
+        print("Tuition Owed: $", format(self.calculate_tuition(), ",.2f"))
+
+
+student1 = Student("Michael", "Taylor", "I", 12)
+student2 = Student("Sarah", "Martinez", "O", 15)
+
+student1.display_student()
+print()
+student2.display_student()
