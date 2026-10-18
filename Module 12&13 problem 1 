@@ -1,0 +1,23 @@
+# Problem 1
+# Display 10 last names in forward and reverse order
+
+last_names = [
+    "Anderson", "Taylor", "Martinez", "Thompson", "White",
+    "Harris", "Clark", "Lewis", "Walker", "Hall"
+]
+
+
+def display_names(names):
+    print("Student Last Names")
+    for i in range(10):
+        print(names[i])
+
+
+def display_reverse(names):
+    print("\nStudent Last Names in Reverse Order")
+    for i in range(9, -1, -1):
+        print(names[i])
+
+
+display_names(last_names)
+display_reverse(last_names)

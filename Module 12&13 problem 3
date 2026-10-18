@@ -1,0 +1,42 @@
+
+# Problem 3
+# Display the highest and lowest exam scores
+
+last_names = [
+    "Anderson", "Taylor", "Martinez", "Thompson", "White",
+    "Harris", "Clark", "Lewis", "Walker", "Hall"
+]
+
+exam_scores = [87, 94, 76, 83, 91, 68, 88, 79, 96, 85]
+
+
+def display_highest(names, scores):
+    high_var = 0
+    high_index = 0
+
+    for i in range(len(scores)):
+        if scores[i] > high_var:
+            high_var = scores[i]
+            high_index = i
+
+    print("Highest Score")
+    print("Student:", names[high_index])
+    print("Score:", high_var)
+
+
+def display_lowest(names, scores):
+    low_var = 999
+    low_index = 0
+
+    for i in range(len(scores)):
+        if scores[i] < low_var:
+            low_var = scores[i]
+            low_index = i
+
+    print("\nLowest Score")
+    print("Student:", names[low_index])
+    print("Score:", low_var)
+
+
+display_highest(last_names, exam_scores)
+display_lowest(last_names, exam_scores)

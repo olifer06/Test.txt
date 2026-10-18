@@ -1,0 +1,27 @@
+
+# Problem 6
+# Display player names and batting averages in two columns
+
+players = {
+    "Anderson": 0.267,
+    "Taylor": 0.300,
+    "Martinez": 0.285,
+    "Thompson": 0.276,
+    "White": 0.310,
+    "Harris": 0.258,
+    "Clark": 0.292,
+    "Lewis": 0.275,
+    "Walker": 0.321,
+    "Hall": 0.288
+}
+
+
+def display_players(player_dictionary):
+    print(f"{'Player Name':<20}{'Batting Average':>18}")
+    print("-" * 38)
+
+    for name in player_dictionary:
+        print(f"{name:<20}{player_dictionary[name]:>18.3f}")
+
+
+display_players(players)

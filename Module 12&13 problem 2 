@@ -1,0 +1,28 @@
+# Problem 2
+# Display student names and exam scores
+
+last_names = [
+    "Anderson", "Taylor", "Martinez", "Thompson", "White",
+    "Harris", "Clark", "Lewis", "Walker", "Hall"
+]
+
+exam_scores = [87, 94, 76, 83, 91, 68, 88, 79, 96, 85]
+
+
+def display_names(names, scores):
+    print("Student Last Name       Exam Score")
+    print("----------------------------------")
+
+    for i in range(10):
+        print(f"{names[i]:<23}{scores[i]:>5}")
+
+
+def display_reverse(names, scores):
+    print("\nStudent Last Name       Exam Score")
+    print("----------------------------------")
+
+    for i in range(9, -1, -1):
+        print(f"{names[i]:<23}{scores[i]:>5}")
+
+display_names(last_names, exam_scores)
+display_reverse(last_names, exam_scores)

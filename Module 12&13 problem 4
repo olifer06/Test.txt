@@ -1,0 +1,31 @@
+# Problem 4
+# Display student grades and class average
+
+grades = {
+    "Anderson": 87,
+    "Taylor": 94,
+    "Martinez": 76,
+    "Thompson": 83,
+    "White": 91,
+    "Harris": 68,
+    "Clark": 88,
+    "Lewis": 79,
+    "Walker": 96,
+    "Hall": 85
+}
+
+total = 0
+count = 0
+
+print(f"{'Student Name':<20}{'Grade':>10}")
+print("-" * 30)
+
+for name in grades:
+    print(f"{name:<20}{grades[name]:>10}")
+    total = total + grades[name]
+    count = count + 1
+
+average = total / count
+
+print("-" * 30)
+print(f"{'Class Average':<20}{average:>10.2f}")
