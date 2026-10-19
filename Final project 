@@ -1,0 +1,191 @@
+games = []
+
+
+def save_games():
+    # Saves all games to a text file.
+    file = open("games.txt", "w")
+
+    for game in games:
+        file.write(
+            game["title"] + "|" +
+            game["platform"] + "|" +
+            game["genre"] + "|" +
+            game["status"] + "\n"
+        )
+
+    file.close()
+
+
+def load_games():
+    # Loads previously saved games from a text file.
+    try:
+        file = open("games.txt", "r")
+
+        for line in file:
+            data = line.strip().split("|")
+
+            if len(data) == 4:
+                game = {
+                    "title": data[0],
+                    "platform": data[1],
+                    "genre": data[2],
+                    "status": data[3]
+                }
+                games.append(game)
+
+        file.close()
+
+    except FileNotFoundError:
+        # Start with an empty list if no file exists yet.
+        pass
+
+
+def menu():
+    # Display the main menu and all avaiable options 
+    print("\Video Game Backlog Manager")
+    print("--------------------------")
+    print("1. Add a Game")
+    print("2. View Games")
+    print("3. Find a Game")
+    print("4. Delete a Game")
+    print("5. Quit")
+   
+
+def add_game():
+    # Ask for information and add a game.
+    print("\nAdd a Game")
+
+    title = input("Game Name: ").strip()
+    platform = input("Platform: ").strip()
+    genre = input("Genre: ").strip()
+    #asks for title of game, platform, and genre to categorize it
+
+    if title == "" or platform == "" or genre == "":
+        print("Please enter all game information.")
+        return
+
+    if "|" in title or "|" in platform or "|" in genre:
+        print("Please do not use the | character.")
+        return
+
+    print("1. Want to Play")
+    print("2. Playing")
+    print("3. Completed")
+
+    choice = input("Select a status: ")
+
+    if choice == "1":
+        status = "Want to Play"
+    elif choice == "2":
+        status = "Playing"
+    elif choice == "3":
+        status = "Completed"
+    else:
+        print("Invalid status.")
+        return
+
+    game = {
+        "title": title,
+        "platform": platform,
+        "genre": genre,
+        "status": status
+    }
+
+    games.append(game)
+    save_games()
+
+    print(title, "was added successfully!")
+
+
+def view_games():
+    # Display all games.
+    print("\nYour Games")
+    print("-" * 75)
+
+    if len(games) == 0:
+        print("No games have been added.")
+        return
+
+    print(f"{'Name':<25}{'Platform':<15}"
+          f"{'Genre':<18}{'Status':<18}")
+    print("-" * 75)
+
+    for game in games:
+        print(f"{game['title'][:24]:<25}"
+              f"{game['platform'][:14]:<15}"
+              f"{game['genre'][:17]:<18}"
+              f"{game['status']:<18}")
+
+
+def find_game():
+    # Search for a game by title.
+    name = input("\nEnter game name to search for: ").strip().lower()
+
+    found = False
+
+    for game in games:
+        if name in game["title"].lower():
+            print("\nFound Game")
+            print("Name:", game["title"])
+            print("Platform:", game["platform"])
+            print("Genre:", game["genre"])
+            print("Status:", game["status"])
+            found = True
+
+    if not found:
+        print("Sorry, unable to find", name)
+
+
+def delete_game():
+    # Delete a game by its number in the list.
+    if len(games) == 0:
+        print("\nThere are no games to delete.")
+        return
+
+    view_games()
+
+    try:
+        number = int(input("\nEnter the number of the game to delete: "))
+
+        if number < 1 or number > len(games):
+            print("Invalid game number.")
+            return
+
+        removed_game = games.pop(number - 1)
+        save_games()
+
+        print(removed_game["title"], "was deleted.")
+
+    except ValueError:
+        print("Please enter a valid number.")
+
+
+def main():
+    # Load saved data and run the program.
+    load_games()
+
+    running = True
+
+    while running:
+        menu()
+        choice = input("\nSelect a choice: ")
+
+        if choice == "1":
+            add_game()
+        elif choice == "2":
+            view_games()
+        elif choice == "3":
+            find_game()
+        elif choice == "4":
+            delete_game()
+        elif choice == "5":
+            save_games()
+            print("Goodbye!")
+            running = False
+        else:
+            print("Invalid choice. Please select 1-5.")
+
+
+# Start the application.
+if __name__ == "__main__":
+    main()
